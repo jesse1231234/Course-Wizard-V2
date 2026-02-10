@@ -82,7 +82,7 @@ export async function POST(request: NextRequest) {
           { role: "system", content: contentSystemPrompt },
           { role: "user", content: contentUserPrompt },
         ],
-        { temperature: 0.7, maxTokens: 8000 }
+        { temperature: 0.7, maxTokens: 20000 }
       );
 
       // Merge structure with content
