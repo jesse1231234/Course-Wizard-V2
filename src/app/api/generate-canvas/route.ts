@@ -53,7 +53,7 @@ export async function POST(request: NextRequest) {
         { role: "system", content: structureSystemPrompt },
         { role: "user", content: structureUserPrompt },
       ],
-      { temperature: 0.7, maxTokens: 4000 }
+      { temperature: 0.7, maxTokens: 16000 }
     );
 
     // Validate structure
