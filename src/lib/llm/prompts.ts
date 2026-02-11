@@ -223,12 +223,13 @@ Generate a JSON object with this structure:
 Generate complete, substantive content for each item:
 - For pages: Include clear lesson content (200-300 words) with DesignTools formatting
 - For assignments: Include clear instructions with DesignTools structure
-- For discussions: Include engaging prompts with 2-3 guiding questions
+- For discussions: Put DesignTools-formatted HTML in the "content" field (dp-content-block sections, callouts, icon headings - but NO dp-wrapper/dp-header). Put a brief plain text summary in the "prompt" field.
 - For quizzes: Include 3-5 questions per quiz
 
 IMPORTANT:
 - All HTML content MUST use DesignTools structure as shown above
 - Use the module position number in each page's dp-header-pre-2 span
+- Discussion "content" fields MUST contain DesignTools HTML with dp-content-block sections and callout boxes
 - Keep the JSON response concise to avoid truncation. Focus on quality over quantity.`;
 }
 
@@ -424,11 +425,34 @@ Generate a JSON object with detailed content for each item:
 Content guidelines:
 - Pages: 200-300 words covering key concepts, formatted with DesignTools structure
 - Assignments: Clear instructions with DesignTools formatting, include rubric with 3-4 criteria
-- Discussions: Engaging prompt with 2-3 guiding questions (use DesignTools callouts for key points)
+- Discussions: The "content" field MUST contain DesignTools-formatted HTML (see discussion format below). The "prompt" field should contain a brief plain text summary.
 - Quizzes: 3-5 questions with answers
 
+### Discussion Content Format
+For discussion items, the "content" field should use dp-content-block sections (NO dp-wrapper or dp-header needed since Canvas shows the discussion title separately):
+
+<div class="dp-content-block">
+    <h3 class="dp-has-icon"><i class="dp-icon fas fa-comments" aria-hidden="true"><span class="dp-icon-content" style="display: none;">&nbsp;</span></i>Discussion Overview</h3>
+    <p>{Context and introduction to the discussion topic}</p>
+</div>
+<div class="dp-content-block">
+    <h3 class="dp-has-icon"><i class="dp-icon fas fa-edit" aria-hidden="true"><span class="dp-icon-content" style="display: none;">&nbsp;</span></i>Guiding Questions</h3>
+    <ol>
+        <li>{Question 1}</li>
+        <li>{Question 2}</li>
+        <li>{Question 3}</li>
+    </ol>
+</div>
+<div class="dp-callout dp-callout-placeholder card dp-callout-position-default dp-callout-type-info dp-callout-color-dp-primary">
+    <div class="dp-callout-side-emphasis"><i class="dp-icon fas fa-info-circle dp-default-icon"><span class="dp-icon-content" style="display: none;">&nbsp;</span></i></div>
+    <div class="card-body">
+        <h3 class="card-title">Participation Requirements</h3>
+        <p class="card-text">{Requirements like reply count, word count, etc.}</p>
+    </div>
+</div>
+
 IMPORTANT: All HTML content in the "content" field MUST use the DesignTools structure shown above, including:
-- The dp-wrapper and dp-header structure with module number ${moduleStructure.position}
-- dp-content-block sections with dp-has-icon headings
+- The dp-wrapper and dp-header structure with module number ${moduleStructure.position} (for pages and assignments)
+- dp-content-block sections with dp-has-icon headings (for ALL content types including discussions)
 - Callout boxes for important information`;
 }
