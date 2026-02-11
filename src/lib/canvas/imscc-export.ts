@@ -184,12 +184,13 @@ ${item.content || "<p>Content coming soon.</p>"}
 }
 
 function generateDiscussionTopicXml(item: CanvasModuleItem): string {
-  const prompt = item.prompt || item.content || "<p>Share your thoughts on this topic.</p>";
+  // Prefer content (which should have DesignTools HTML) over prompt (plain text fallback)
+  const discussionBody = item.content || item.prompt || "<p>Share your thoughts on this topic.</p>";
 
   return `<?xml version="1.0" encoding="UTF-8"?>
 <topic xmlns="http://www.imsglobal.org/xsd/imsccv1p1/imsdt_v1p1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsccv1p1/imsdt_v1p1 http://www.imsglobal.org/profile/cc/ccv1p1/ccv1p1_imsdt_v1p1.xsd">
   <title>${escapeXml(item.title)}</title>
-  <text texttype="text/html">${escapeXml(prompt)}</text>
+  <text texttype="text/html">${escapeXml(discussionBody)}</text>
 </topic>`;
 }
 
