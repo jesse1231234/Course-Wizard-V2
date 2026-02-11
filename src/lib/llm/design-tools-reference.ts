@@ -121,12 +121,36 @@ Use for expandable content like FAQs or detailed instructions:
     </div>
 </div>
 
+### Discussion Content Format
+For discussion items, put DesignTools HTML in the "content" field. Do NOT use dp-wrapper or dp-header (Canvas shows the title separately). Use dp-content-block sections and callouts:
+
+<div class="dp-content-block">
+    <h3 class="dp-has-icon"><i class="dp-icon fas fa-comments" aria-hidden="true"><span class="dp-icon-content" style="display: none;">&nbsp;</span></i>Discussion Overview</h3>
+    <p>{Context paragraph introducing the discussion topic}</p>
+</div>
+<div class="dp-content-block">
+    <h3 class="dp-has-icon"><i class="dp-icon fas fa-edit" aria-hidden="true"><span class="dp-icon-content" style="display: none;">&nbsp;</span></i>Guiding Questions</h3>
+    <ol>
+        <li>{Question 1}</li>
+        <li>{Question 2}</li>
+        <li>{Question 3}</li>
+    </ol>
+</div>
+<div class="dp-callout dp-callout-placeholder card dp-callout-position-default dp-callout-type-info dp-callout-color-dp-primary">
+    <div class="dp-callout-side-emphasis"><i class="dp-icon fas fa-info-circle dp-default-icon"><span class="dp-icon-content" style="display: none;">&nbsp;</span></i></div>
+    <div class="card-body">
+        <h3 class="card-title">Participation Requirements</h3>
+        <p class="card-text">{Requirements like reply count, word count, etc.}</p>
+    </div>
+</div>
+
 ### Important Rules
 1. ALWAYS include the dp-icon-content span inside icons: <span class="dp-icon-content" style="display: none;">&nbsp;</span>
 2. ALWAYS include aria-hidden="true" on icon elements
 3. Use dp-content-block to separate major sections
 4. Keep the header structure exactly as shown (dp-header-pre-1, dp-header-pre-2, dp-header-title)
 5. Replace {MODULE_NUMBER}, {PAGE_TITLE}, etc. with actual values
+6. For discussions: put DesignTools HTML in "content" field, plain text summary in "prompt" field
 `;
 }
 
