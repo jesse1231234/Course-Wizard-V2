@@ -135,6 +135,7 @@ export interface QuestionnaireActions {
   setCurrentSection: (index: number) => void;
   markSectionComplete: (sectionId: string) => void;
   setCheckpointResult: (checkpointId: string, result: EvaluationResult) => void;
+  clearCheckpointResult: (checkpointId: string) => void;
   setGeneratedCourse: (course: GeneratedCourse) => void;
   reset: () => void;
   getAnswersForSection: (sectionId: string, sections: Section[]) => Record<string, string | string[]>;
