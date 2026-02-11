@@ -51,6 +51,13 @@ export const useQuestionnaireStore = create<QuestionnaireState & QuestionnaireAc
         }));
       },
 
+      clearCheckpointResult: (checkpointId: string) => {
+        set((state) => {
+          const { [checkpointId]: _, ...rest } = state.checkpointResults;
+          return { checkpointResults: rest };
+        });
+      },
+
       setGeneratedCourse: (course: GeneratedCourse) => {
         set({ generatedCourse: course });
       },
