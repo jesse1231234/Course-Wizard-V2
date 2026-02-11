@@ -27,6 +27,7 @@ export default function QuestionnairePage() {
     setCurrentSection,
     markSectionComplete,
     setCheckpointResult,
+    clearCheckpointResult,
     getAnswersForSection,
   } = useQuestionnaireStore();
 
@@ -152,6 +153,9 @@ export default function QuestionnairePage() {
 
   // Handle revising after failed checkpoint
   const handleRevise = () => {
+    if (checkpoint) {
+      clearCheckpointResult(checkpoint.id);
+    }
     setShowCheckpoint(false);
   };
 
